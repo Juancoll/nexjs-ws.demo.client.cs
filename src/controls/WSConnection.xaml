@@ -18,37 +18,28 @@
         </Style>
     </UserControl.Resources>
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
         <WrapPanel Grid.Row="0">
             <WrapPanel Orientation="Vertical">
                 <Label Width="600" FontWeight="Bold">@nexjs Websocket Connection</Label>
                 <TextBox x:Name="_uiTextBoxUrl">http://localhost:3000</TextBox>
-                <Button x:Name="_uiButtonConnect">Connect</Button>
-                <Button x:Name="_uiButtonDisconnect">Disconnect</Button>
+                <Button x:Name="_uiButtonConnect" Click="_uiButtonConnect_Click">Connect</Button>
+                <Button x:Name="_uiButtonDisconnect" Click="_uiButtonDisconnect_Click">Disconnect</Button>
             </WrapPanel>
             <WrapPanel Orientation="Vertical">
                 <Label Height="28" FontWeight="Bold">@nexjs Auth Module</Label>
                 <WrapPanel Orientation="Horizontal">
                     <TextBox x:Name="_uiTextBoxRegisterEmail" Width="200">juan@any.com</TextBox>
                     <TextBox x:Name="_uiTextBoxRegisterPassword" Height="28" Width="200">123456</TextBox>
-                    <Button x:Name="_uiButtonRegister" Width="200">Register</Button>
+                    <Button x:Name="_uiButtonRegister" Width="200" Click="_uiButtonRegister_Click">Register</Button>
                 </WrapPanel>
                 <WrapPanel Orientation="Horizontal">
                     <TextBox x:Name="_uiTextBoxLoginEmail" Width="200">juan@any.com</TextBox>
                     <TextBox x:Name="_uiTextBoxLoginPassword" Width="200">123456</TextBox>
-                    <Button x:Name="_uiButtonLogin" Width="200">Login</Button>
+                    <Button x:Name="_uiButtonLogin" Width="200" Click="_uiButtonLogin_Click">Login</Button>
                 </WrapPanel>
-                <Button x:Name="_uiButtonLogout">Logout</Button>
+                <Button x:Name="_uiButtonLogout" Click="_uiButtonLogout_Click">Logout</Button>
             </WrapPanel>
         </WrapPanel>
-        <TabControl x:Name="_uiTab" Grid.Row="2">
-            <TabItem Header="Base"></TabItem>
-            <TabItem Header="Auth"></TabItem>
-            <TabItem Header="Credentials"></TabItem>
-        </TabControl>
+       
     </Grid>
 </UserControl>

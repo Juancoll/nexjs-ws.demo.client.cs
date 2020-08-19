@@ -58,19 +58,10 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="src\controls\HubControl.xaml.cs">
-      <DependentUpon>HubControl.xaml</DependentUpon>
+    <Compile Include="src\controls\WSConnection.xaml.cs">
+      <DependentUpon>WSConnection.xaml</DependentUpon>
     </Compile>
-    <Compile Include="src\controls\RestControl.xaml.cs">
-      <DependentUpon>RestControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="src\controls\WSServiceControl.xaml.cs">
-      <DependentUpon>WSServiceControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="src\types\Context.cs" />
-    <Compile Include="src\types\HubDescriptor.cs" />
-    <Compile Include="src\types\RestDescriptor.cs" />
-    <Compile Include="src\types\WSServiceDescriptor.cs" />
+    <Compile Include="src\Context.cs" />
     <Compile Include="src\ws\**\*.cs" Exclude="obj\**" />
   </ItemGroup>
   <ItemGroup>
@@ -78,15 +69,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="src\controls\HubControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="src\controls\RestControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="src\controls\WSServiceControl.xaml">
+    <Page Include="src\controls\WSConnection.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
