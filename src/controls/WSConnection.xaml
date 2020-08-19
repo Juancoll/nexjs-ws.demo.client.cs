@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="demo.wsclient.src.controls.WSConnection"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:demo.wsclient.src.controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="Height" Value="28" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Margin" Value="2" />
+        </Style>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Height" Value="28" />
+            <Setter Property="Margin" Value="2" />
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <WrapPanel Grid.Row="0">
+            <WrapPanel Orientation="Vertical">
+                <Label Width="600" FontWeight="Bold">@nexjs Websocket Connection</Label>
+                <TextBox x:Name="_uiTextBoxUrl">http://localhost:3000</TextBox>
+                <Button x:Name="_uiButtonConnect">Connect</Button>
+                <Button x:Name="_uiButtonDisconnect">Disconnect</Button>
+            </WrapPanel>
+            <WrapPanel Orientation="Vertical">
+                <Label Height="28" FontWeight="Bold">@nexjs Auth Module</Label>
+                <WrapPanel Orientation="Horizontal">
+                    <TextBox x:Name="_uiTextBoxRegisterEmail" Width="200">juan@any.com</TextBox>
+                    <TextBox x:Name="_uiTextBoxRegisterPassword" Height="28" Width="200">123456</TextBox>
+                    <Button x:Name="_uiButtonRegister" Width="200">Register</Button>
+                </WrapPanel>
+                <WrapPanel Orientation="Horizontal">
+                    <TextBox x:Name="_uiTextBoxLoginEmail" Width="200">juan@any.com</TextBox>
+                    <TextBox x:Name="_uiTextBoxLoginPassword" Width="200">123456</TextBox>
+                    <Button x:Name="_uiButtonLogin" Width="200">Login</Button>
+                </WrapPanel>
+                <Button x:Name="_uiButtonLogout">Logout</Button>
+            </WrapPanel>
+        </WrapPanel>
+        <TabControl x:Name="_uiTab" Grid.Row="2">
+            <TabItem Header="Base"></TabItem>
+            <TabItem Header="Auth"></TabItem>
+            <TabItem Header="Credentials"></TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>
