@@ -1,0 +1,13 @@
+{
+  "name": "nexjs-ws.demo.client.cs",
+  "version": "1.0.0",
+  "description": "npm package is only used for npm script command",
+  "scripts": {
+    "ws:update": "  nexjs cs ws   up-client -s ../nexjs-ws.demo.server.nestjs                        -o ./src/ws -n demo.wsclient",
+    "http:update": "nexjs cs http up-client -s ../nexjs-ws.demo.server.nestjs/dist/swagger-spec.json -o ./src/http -n demo.httpclient"
+  },
+  "devDependencies": {
+    "@nexjs/cli": "^1.5.0",
+    "rimraf": "^3.0.2"
+  }
+}

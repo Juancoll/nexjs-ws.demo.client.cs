@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using Newtonsoft;
 using Newtonsoft.Json.Linq;
 
-namespace template.api.wsclient 
+namespace demo.wsclient 
 {
-    public class OrgType 
+    public class DataType 
     {
         public string a { get; set; }
         public bool b { get; set; }

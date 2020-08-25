@@ -6,27 +6,60 @@
         xmlns:controls="clr-namespace:demo.wsclient.src.controls"
         mc:Ignorable="d"
         Title="wsclient - test.app" Height="600" Width="800">
-    <Window.Resources>
-        <Style TargetType="{x:Type TextBox}">
-            <Setter Property="Height" Value="28" />
-            <Setter Property="VerticalContentAlignment" Value="Center" />
-            <Setter Property="Margin" Value="2" />
-        </Style>
-        <Style TargetType="{x:Type Button}">
-            <Setter Property="Height" Value="28" />
-            <Setter Property="Margin" Value="2" />
-        </Style>
-    </Window.Resources>
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <controls:WSConnection x:Name="_uiWSConnection" />
-        <TabControl x:Name="_uiTab" Grid.Row="2">
-            <TabItem Header="Base"></TabItem>
-            <TabItem Header="Auth"></TabItem>
-            <TabItem Header="Credentials"></TabItem>
+        <TabControl>
+            <TabItem Header="Websocket">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <controls:WSConnection x:Name="_uiWSConnection" />
+                    <Rectangle Grid.Row="1" Height="10" Fill="LightGray" Margin="0 5"></Rectangle>
+                    <TabControl x:Name="_uiTab" Grid.Row="2">
+                        <TabItem Header="Base">
+                            <ScrollViewer>
+                                <controls:WSBaseContract/>
+                            </ScrollViewer>
+                        </TabItem>
+                        <TabItem Header="Auth">
+                            <ScrollViewer>
+                                <controls:WSAuthContract/>
+                            </ScrollViewer>
+                        </TabItem>
+                        <TabItem Header="Credentials">
+                            <ScrollViewer>
+                                <controls:WSCredentialsContract/>
+                            </ScrollViewer>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
+            <TabItem Header="http Rest Api">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <controls:HttpConnection/>
+                    <Rectangle Grid.Row="1" Height="10" Fill="LightGray" Margin="0 5"></Rectangle>
+                    <TabControl Grid.Row="2">
+                        <TabItem Header="Default">
+                            <ScrollViewer>
+                                <controls:HttpDefaultApi/>
+                            </ScrollViewer>
+                        </TabItem>
+                        <TabItem Header="Test">
+                            <ScrollViewer>
+                                <controls:HttpTestApi/>
+                            </ScrollViewer>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>

@@ -42,8 +42,14 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="RestSharp, Version=105.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\RestSharp.105.1.0\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -58,18 +64,215 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="src\controls\WSConnection.xaml.cs">
+    <Compile Include="src\controls\http\apis\HttpTestApi.xaml.cs">
+      <DependentUpon>HttpTestApi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="src\controls\http\apis\HttpDefaultApi.xaml.cs">
+      <DependentUpon>HttpDefaultApi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="src\controls\http\HttpConnection.xaml.cs">
+      <DependentUpon>HttpConnection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="src\controls\ws\contracts\WSAuthContract.xaml.cs">
+      <DependentUpon>WSAuthContract.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="src\controls\ws\contracts\WSCredentialsContract.xaml.cs">
+      <DependentUpon>WSCredentialsContract.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="src\controls\ws\contracts\WSBaseContract.xaml.cs">
+      <DependentUpon>WSBaseContract.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="src\controls\ws\WSConnection.xaml.cs">
       <DependentUpon>WSConnection.xaml</DependentUpon>
     </Compile>
     <Compile Include="src\Context.cs" />
-    <Compile Include="src\ws\**\*.cs" Exclude="obj\**" />
+    <Compile Include="src\http\Api\AuthApi.cs" />
+    <Compile Include="src\http\Api\DbDatasApi.cs" />
+    <Compile Include="src\http\Api\DbUsersApi.cs" />
+    <Compile Include="src\http\Api\DefaultApi.cs" />
+    <Compile Include="src\http\Api\TestApi.cs" />
+    <Compile Include="src\http\Client\ApiClient.cs" />
+    <Compile Include="src\http\Client\ApiException.cs" />
+    <Compile Include="src\http\Client\ApiResponse.cs" />
+    <Compile Include="src\http\Client\Configuration.cs" />
+    <Compile Include="src\http\Client\ExceptionFactory.cs" />
+    <Compile Include="src\http\Client\GlobalConfiguration.cs" />
+    <Compile Include="src\http\Client\IApiAccessor.cs" />
+    <Compile Include="src\http\Client\IReadableConfiguration.cs" />
+    <Compile Include="src\http\Client\OpenAPIDateConverter.cs" />
+    <Compile Include="src\http\Model\AuthJwtLoginResponseDto.cs" />
+    <Compile Include="src\http\Model\AuthLoginDto.cs" />
+    <Compile Include="src\http\Model\AuthUserDto.cs" />
+    <Compile Include="src\http\Model\PackageJson.cs" />
+    <Compile Include="src\http\Model\User.cs" />
+    <Compile Include="src\ws\api\services\AuthContractWSService.cs" />
+    <Compile Include="src\ws\api\services\BaseContractWSService.cs" />
+    <Compile Include="src\ws\api\services\CredentialsContractWSService.cs" />
+    <Compile Include="src\ws\api\WsApi.cs" />
+    <Compile Include="src\ws\lib\engineio\EngineIO.cs" />
+    <Compile Include="src\ws\lib\engineio\EngineIOPacket.cs" />
+    <Compile Include="src\ws\lib\engineio\EngineIOPacketType.cs" />
+    <Compile Include="src\ws\lib\engineio\EngineIOSession.cs" />
+    <Compile Include="src\ws\lib\socketio\SocketIO.cs" />
+    <Compile Include="src\ws\lib\socketio\SocketIOEvent.cs" />
+    <Compile Include="src\ws\lib\socketio\SocketIOPacket.cs" />
+    <Compile Include="src\ws\lib\socketio\SocketIOPacketType.cs" />
+    <Compile Include="src\ws\lib\types\Emitter.cs" />
+    <Compile Include="src\ws\lib\types\EventArgs.cs" />
+    <Compile Include="src\ws\lib\types\Logger.cs" />
+    <Compile Include="src\ws\lib\types\Packet.cs" />
+    <Compile Include="src\ws\lib\types\QueryEx.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\ByteOrder.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\CloseEventArgs.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\CloseStatusCode.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\CompressionMethod.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\ErrorEventArgs.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Ext.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Fin.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\HttpBase.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\HttpRequest.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\HttpResponse.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\LogData.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Logger.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\LogLevel.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Mask.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\MessageEventArgs.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\AuthenticationBase.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\AuthenticationChallenge.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\AuthenticationResponse.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\AuthenticationSchemes.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\Chunk.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\ChunkedRequestStream.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\ChunkStream.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\ClientSslConfiguration.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\Cookie.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\CookieCollection.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\CookieException.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\EndPointListener.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\EndPointManager.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\HttpBasicIdentity.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\HttpConnection.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\HttpDigestIdentity.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\HttpHeaderInfo.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\HttpHeaderType.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\HttpListener.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\HttpListenerAsyncResult.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\HttpListenerContext.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\HttpListenerException.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\HttpListenerPrefix.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\HttpListenerPrefixCollection.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\HttpListenerRequest.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\HttpListenerResponse.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\HttpRequestHeader.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\HttpResponseHeader.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\HttpStatusCode.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\HttpStreamAsyncResult.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\HttpUtility.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\HttpVersion.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\InputChunkState.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\InputState.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\LineState.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\NetworkCredential.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\QueryStringCollection.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\ReadBufferState.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\RequestStream.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\ResponseStream.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\ServerSslConfiguration.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\WebHeaderCollection.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\WebSockets\HttpListenerWebSocketContext.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\WebSockets\TcpListenerWebSocketContext.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Net\WebSockets\WebSocketContext.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Opcode.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\PayloadData.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Rsv.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Server\HttpRequestEventArgs.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Server\HttpServer.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Server\IWebSocketSession.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Server\ServerState.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Server\WebSocketBehavior.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Server\WebSocketServer.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Server\WebSocketServiceHost.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Server\WebSocketServiceHost`1.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Server\WebSocketServiceManager.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\Server\WebSocketSessionManager.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\WebSocket.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\WebSocketException.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\WebSocketFrame.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\src\WebSocketState.cs" />
+    <Compile Include="src\ws\lib\WebSocketSharp\WebSocketImpl.cs" />
+    <Compile Include="src\ws\lib\websocket\CloseState.cs" />
+    <Compile Include="src\ws\lib\websocket\IWebsocket.cs" />
+    <Compile Include="src\ws\lib\websocket\Message.cs" />
+    <Compile Include="src\ws\lib\websocket\ReadyState.cs" />
+    <Compile Include="src\ws\lib\ws\base\EventData.cs" />
+    <Compile Include="src\ws\lib\ws\base\EventError.cs" />
+    <Compile Include="src\ws\lib\ws\base\IWSBase.cs" />
+    <Compile Include="src\ws\lib\ws\base\NestJSWSException.cs" />
+    <Compile Include="src\ws\lib\ws\base\rest\messages\IId.cs" />
+    <Compile Include="src\ws\lib\ws\base\rest\messages\RestProtocolRequest.cs" />
+    <Compile Include="src\ws\lib\ws\base\rest\messages\RestProtocolResponse.cs" />
+    <Compile Include="src\ws\lib\ws\base\rest\RestProtocolClient.cs" />
+    <Compile Include="src\ws\lib\ws\base\rest\RestProtocolRequestQueue.cs" />
+    <Compile Include="src\ws\lib\ws\base\rest\types\RestProtocolResponseError.cs" />
+    <Compile Include="src\ws\lib\ws\clients\auth\AuthClient.cs" />
+    <Compile Include="src\ws\lib\ws\clients\auth\messages\AuthRequest.cs" />
+    <Compile Include="src\ws\lib\ws\clients\auth\messages\AuthResponse.cs" />
+    <Compile Include="src\ws\lib\ws\clients\auth\types\AuthInfo.cs" />
+    <Compile Include="src\ws\lib\ws\clients\auth\types\IAuthClient.cs" />
+    <Compile Include="src\ws\lib\ws\clients\hub\HubClient.cs" />
+    <Compile Include="src\ws\lib\ws\clients\hub\HubSubscriptionCollection.cs" />
+    <Compile Include="src\ws\lib\ws\clients\hub\messages\HubEventMessage.cs" />
+    <Compile Include="src\ws\lib\ws\clients\hub\messages\HubRequest.cs" />
+    <Compile Include="src\ws\lib\ws\clients\hub\messages\HubResponse.cs" />
+    <Compile Include="src\ws\lib\ws\clients\hub\notifications\HubNotification.cs" />
+    <Compile Include="src\ws\lib\ws\clients\hub\notifications\HubNotificationCredentials.cs" />
+    <Compile Include="src\ws\lib\ws\clients\hub\notifications\HubNotificationCredentialsData.cs" />
+    <Compile Include="src\ws\lib\ws\clients\hub\notifications\HubNotificationData.cs" />
+    <Compile Include="src\ws\lib\ws\clients\hub\types\HubSubscriptionError.cs" />
+    <Compile Include="src\ws\lib\ws\clients\rest\messages\RestRequest.cs" />
+    <Compile Include="src\ws\lib\ws\clients\rest\RestClient.cs" />
+    <Compile Include="src\ws\lib\ws\clients\WSClientBase.cs" />
+    <Compile Include="src\ws\lib\ws\socket.io\SocketIOClient.cs" />
+    <Compile Include="src\ws\lib\ws\types\WSError.cs" />
+    <Compile Include="src\ws\lib\ws\types\WSErrorCode.cs" />
+    <Compile Include="src\ws\lib\ws\WSApiBase.cs" />
+    <Compile Include="src\ws\lib\ws\WSServiceBase.cs" />
+    <Compile Include="src\ws\models\AnyData.cs" />
+    <Compile Include="src\ws\models\DataType.cs" />
+    <Compile Include="src\ws\models\Model.cs" />
+    <Compile Include="src\ws\models\ModelComponent.cs" />
+    <Compile Include="src\ws\models\User.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="src\App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="src\controls\WSConnection.xaml">
+    <Page Include="src\controls\http\apis\HttpTestApi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="src\controls\http\apis\HttpDefaultApi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="src\controls\http\HttpConnection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="src\controls\ws\contracts\WSAuthContract.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="src\controls\ws\contracts\WSCredentialsContract.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="src\controls\ws\contracts\WSBaseContract.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="src\controls\ws\WSConnection.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -113,5 +316,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

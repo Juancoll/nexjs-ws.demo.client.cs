@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="demo.wsclient.src.controls.HttpConnection"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <WrapPanel Orientation="Vertical">
+            <Label Width="612" Style="{StaticResource Title}">Http API CONNECTION</Label>
+            <TextBox x:Name="_uiTextBoxUrl">http://localhost:3000</TextBox>
+            <Button x:Name="_uiButtonSet" Click="_uiButtonSet_Click">Set</Button>
+
+            <WrapPanel Orientation="Vertical">
+                <Label Width="612" Style="{StaticResource Title}">Http Auth Local Module</Label>
+                <WrapPanel Orientation="Horizontal">
+                    <TextBox x:Name="_uiTextBoxRegisterEmail" Width="200">juan@any.com</TextBox>
+                    <TextBox x:Name="_uiTextBoxRegisterPassword" Height="28" Width="200">123456</TextBox>
+                    <Button x:Name="_uiButtonRegister" Width="200" Click="_uiButtonRegister_Click">Register</Button>
+                </WrapPanel>
+                
+                <Label Width="612" Style="{StaticResource SubTitle}">Local Authentication</Label>
+                <WrapPanel Orientation="Horizontal">
+                    <TextBox x:Name="_uiTextBoxLoginLocalEmail" Width="200">juan@any.com</TextBox>
+                    <TextBox x:Name="_uiTextBoxLoginLocalPassword" Width="200">123456</TextBox>
+                    <Button x:Name="_uiButtonLoginLocal" Width="200" Click="_uiButtonLoginLocal_Click">Login</Button>
+                </WrapPanel>
+                <Button x:Name="_uiButtonLogoutLocal" Click="_uiButtonLogoutLocal_Click">Logout</Button>
+                
+                <Label Width="612" Style="{StaticResource SubTitle}">JWT Authentication</Label>
+                <WrapPanel Orientation="Horizontal">
+                    <TextBox x:Name="_uiTextBoxLoginJwtEmail" Width="200">juan@any.com</TextBox>
+                    <TextBox x:Name="_uiTextBoxLoginJwtPassword" Width="200">123456</TextBox>
+                    <Button x:Name="_uiButtonLoginJwt" Width="200" Click="_uiButtonLoginJwt_Click">Login</Button>
+                </WrapPanel>
+                <Button x:Name="_uiButtonLogoutJwt" Click="_uiButtonLogoutJwt_Click">Logout</Button>
+            </WrapPanel>
+        </WrapPanel>
+    </Grid>
+</UserControl>

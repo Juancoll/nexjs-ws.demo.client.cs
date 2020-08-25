@@ -18,15 +18,15 @@
         </Style>
     </UserControl.Resources>
     <Grid>
-        <WrapPanel Grid.Row="0">
+        <WrapPanel Grid.Row="0" Margin="-4,0,4,0">
             <WrapPanel Orientation="Vertical">
-                <Label Width="600" FontWeight="Bold">@nexjs Websocket Connection</Label>
+                <Label Width="612" Style="{StaticResource Title}">@nexjs Websocket Base Connection</Label>
                 <TextBox x:Name="_uiTextBoxUrl">http://localhost:3000</TextBox>
                 <Button x:Name="_uiButtonConnect" Click="_uiButtonConnect_Click">Connect</Button>
                 <Button x:Name="_uiButtonDisconnect" Click="_uiButtonDisconnect_Click">Disconnect</Button>
             </WrapPanel>
             <WrapPanel Orientation="Vertical">
-                <Label Height="28" FontWeight="Bold">@nexjs Auth Module</Label>
+                <Label Style="{StaticResource Title}">@nexjs Auth Module</Label>
                 <WrapPanel Orientation="Horizontal">
                     <TextBox x:Name="_uiTextBoxRegisterEmail" Width="200">juan@any.com</TextBox>
                     <TextBox x:Name="_uiTextBoxRegisterPassword" Height="28" Width="200">123456</TextBox>

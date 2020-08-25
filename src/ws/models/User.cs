@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Newtonsoft;
 using Newtonsoft.Json.Linq;
 
-namespace template.api.wsclient 
+namespace demo.wsclient 
 {
     public class User: Model 
     {

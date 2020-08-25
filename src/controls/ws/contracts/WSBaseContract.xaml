@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="demo.wsclient.src.controls.WSBaseContract"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:demo.wsclient.src.controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <WrapPanel Orientation="Vertical">
+            <Label Style="{StaticResource Title}">Base Contract</Label>
+            <Label Style="{StaticResource SubTitle}">Pub/Sub Protocol (Hub module)</Label>
+            <WrapPanel Orientation="Horizontal">
+                <Button x:Name="_uiButtonSubscribe" Width="300" Click="_uiButtonSubscribe_Click">SUBSCRIBE</Button>
+                <Button x:Name="_uiButtonUnsubscribe" Width="300" Click="_uiButtonUnsubscribe_Click">UNSUBSCRIBE</Button>
+            </WrapPanel>
+            <Label Style="{StaticResource SubTitle}">Req/Res Protocol (Rest Module)</Label>
+            <WrapPanel Orientation="Horizontal">
+                <Button x:Name="_uiButtonPrint" Width="200" Click="_uiButtonPrint_Click">PRINT</Button>
+                <Button x:Name="_uiButtonDelay" Width="200" Click="_uiButtonDelay_Click">DELAY</Button>
+                <Button x:Name="_uiButtonNotify" Width="200" Click="_uiButtonNotify_Click">NOTIFY</Button>
+            </WrapPanel>
+        </WrapPanel>
+    </Grid>
+</UserControl>
