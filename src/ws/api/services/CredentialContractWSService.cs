@@ -5,14 +5,14 @@ using nex.ws;
 
 namespace demo.wsclient
 {
-    public class AuthContractWSService<TUser, TToken>: WSServiceBase<TUser, TToken>
+    public class CredentialContractWSService<TUser, TToken>: WSServiceBase<TUser, TToken>
     {
         #region [ implement WSServiceBase ]
-        public override string Name { get { return "authContract"; } }
+        public override string Name { get { return "credentialContract"; } }
         #endregion
 
         #region [ constructor ]
-        public AuthContractWSService(RestClient<TUser, TToken> rest, HubClient<TUser, TToken> hub)
+        public CredentialContractWSService(RestClient<TUser, TToken> rest, HubClient<TUser, TToken> hub)
             :base(rest, hub)
         {
             _onUpdate = new HubEventSelector<TUser, TToken, double>(hub, Name, "onUpdate");

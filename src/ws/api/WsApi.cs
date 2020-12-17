@@ -7,13 +7,13 @@ namespace demo.wsclient
         #region [ private ]
         private AuthContractWSService<TUser, TToken> _authContract;
         private BaseContractWSService<TUser, TToken> _baseContract;
-        private CredentialsContractWSService<TUser, TToken> _credentialsContract;
+        private CredentialContractWSService<TUser, TToken> _credentialContract;
         #endregion
 
         #region [ services ]
         public AuthContractWSService<TUser, TToken> authContract { get { return _authContract; } }
         public BaseContractWSService<TUser, TToken> baseContract { get { return _baseContract; } }
-        public CredentialsContractWSService<TUser, TToken> credentialsContract { get { return _credentialsContract; } }
+        public CredentialContractWSService<TUser, TToken> credentialContract { get { return _credentialContract; } }
         #endregion
 
         #region [ constructor ]
@@ -21,7 +21,7 @@ namespace demo.wsclient
         {
             _authContract = new AuthContractWSService<TUser, TToken>(Rest, Hub);
             _baseContract = new BaseContractWSService<TUser, TToken>(Rest, Hub);
-            _credentialsContract = new CredentialsContractWSService<TUser, TToken>(Rest, Hub);
+            _credentialContract = new CredentialContractWSService<TUser, TToken>(Rest, Hub);
         }
         #endregion
     }

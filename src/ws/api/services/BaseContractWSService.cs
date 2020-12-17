@@ -15,35 +15,35 @@ namespace demo.wsclient
         public BaseContractWSService(RestClient<TUser, TToken> rest, HubClient<TUser, TToken> hub)
             :base(rest, hub)
         {
-            _onUpdate = new HubNotification<TUser, TToken>(hub, Name, "onUpdate");
-            _onDataUpdate = new HubNotificationData<TUser, TToken, DataType>(hub, Name, "onDataUpdate");
+            _onUpdate = new HubEvent<TUser, TToken>(hub, Name, "onUpdate");
+            _onDataUpdate = new HubEventData<TUser, TToken, AnyData>(hub, Name, "onDataUpdate");
         }
         #endregion
 
         #region [ hub private ]
-        private HubNotification<TUser, TToken> _onUpdate { get; }
-        private HubNotificationData<TUser, TToken, DataType> _onDataUpdate { get; }
+        private HubEvent<TUser, TToken> _onUpdate { get; }
+        private HubEventData<TUser, TToken, AnyData> _onDataUpdate { get; }
         #endregion
 
         #region [ hub public ]
 
         // isAuth: false
-        public HubNotification<TUser, TToken> onUpdate { get { return _onUpdate; } }
+        public HubEvent<TUser, TToken> onUpdate { get { return _onUpdate; } }
 
         // isAuth: false
-        public HubNotificationData<TUser, TToken, DataType> onDataUpdate { get { return _onDataUpdate; } }
+        public HubEventData<TUser, TToken, AnyData> onDataUpdate { get { return _onDataUpdate; } }
         #endregion
 
         #region [ rest ]
 
         // isAuth: false
-        public Task print() { return Request( "print", null, null  ); }
+        public Task print() { return Request( "print", null ); }
 
         // isAuth: false
-        public Task<double> delay(double value) { return Request<double>( "delay", value, null  ); }
+        public Task<double> delay(double value) { return Request<double>( "delay", value ); }
 
         // isAuth: false
-        public Task notify() { return Request( "notify", null, null  ); }
+        public Task notify() { return Request( "notify", null ); }
         #endregion
     }
 }

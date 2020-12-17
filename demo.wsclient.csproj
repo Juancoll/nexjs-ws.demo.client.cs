@@ -107,7 +107,7 @@
     <Compile Include="src\http\Model\User.cs" />
     <Compile Include="src\ws\api\services\AuthContractWSService.cs" />
     <Compile Include="src\ws\api\services\BaseContractWSService.cs" />
-    <Compile Include="src\ws\api\services\CredentialsContractWSService.cs" />
+    <Compile Include="src\ws\api\services\CredentialContractWSService.cs" />
     <Compile Include="src\ws\api\WsApi.cs" />
     <Compile Include="src\ws\lib\engineio\EngineIO.cs" />
     <Compile Include="src\ws\lib\engineio\EngineIOPacket.cs" />
@@ -224,10 +224,10 @@
     <Compile Include="src\ws\lib\ws\clients\hub\messages\HubEventMessage.cs" />
     <Compile Include="src\ws\lib\ws\clients\hub\messages\HubRequest.cs" />
     <Compile Include="src\ws\lib\ws\clients\hub\messages\HubResponse.cs" />
-    <Compile Include="src\ws\lib\ws\clients\hub\notifications\HubNotification.cs" />
-    <Compile Include="src\ws\lib\ws\clients\hub\notifications\HubNotificationCredentials.cs" />
-    <Compile Include="src\ws\lib\ws\clients\hub\notifications\HubNotificationCredentialsData.cs" />
-    <Compile Include="src\ws\lib\ws\clients\hub\notifications\HubNotificationData.cs" />
+    <Compile Include="src\ws\lib\ws\clients\hub\events\HubEvent.cs" />
+    <Compile Include="src\ws\lib\ws\clients\hub\events\HubEventSelector.cs" />
+    <Compile Include="src\ws\lib\ws\clients\hub\events\HubEventSelectorData.cs" />
+    <Compile Include="src\ws\lib\ws\clients\hub\events\HubEventData.cs" />
     <Compile Include="src\ws\lib\ws\clients\hub\types\HubSubscriptionError.cs" />
     <Compile Include="src\ws\lib\ws\clients\rest\messages\RestRequest.cs" />
     <Compile Include="src\ws\lib\ws\clients\rest\RestClient.cs" />
@@ -238,9 +238,6 @@
     <Compile Include="src\ws\lib\ws\WSApiBase.cs" />
     <Compile Include="src\ws\lib\ws\WSServiceBase.cs" />
     <Compile Include="src\ws\models\AnyData.cs" />
-    <Compile Include="src\ws\models\DataType.cs" />
-    <Compile Include="src\ws\models\Model.cs" />
-    <Compile Include="src\ws\models\ModelComponent.cs" />
     <Compile Include="src\ws\models\User.cs" />
   </ItemGroup>
   <ItemGroup>

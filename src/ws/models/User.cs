@@ -5,12 +5,10 @@ using Newtonsoft.Json.Linq;
 
 namespace demo.wsclient 
 {
-    public class User: Model 
+    public class User 
     {
         public string email { get; set; }
         public string password { get; set; }
         public List<string> roles { get; set; }
-        public string name { get; set; }
-        public string surname { get; set; }
     }
 }

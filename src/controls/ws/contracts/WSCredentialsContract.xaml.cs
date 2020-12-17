@@ -12,8 +12,8 @@ namespace demo.wsclient.src.controls
         public WSCredentialsContract()
         {
             InitializeComponent();
-            Context.Instance.wsapi.credentialsContract.onUpdate.On(() => { Console.WriteLine("[WSCredentialsContract] onUpdate"); });
-            Context.Instance.wsapi.credentialsContract.onDataUpdate.On((data) => { Console.WriteLine("[WSCredentialsContract] onDataUpdate data={{ a: {0}, b:{1} }}", data.a, data.b); });
+            Context.Instance.wsapi.credentialContract.onUpdate.On(() => { Console.WriteLine("[WSCredentialsContract] onUpdate"); });
+            Context.Instance.wsapi.credentialContract.onDataUpdate.On((data) => { Console.WriteLine("[WSCredentialsContract] onDataUpdate data={{ a: {0}, b:{1} }}", data.a, data.b); });
         }
 
         async private void _uiButtonSubscribe_Click(object sender, RoutedEventArgs e)
@@ -21,8 +21,8 @@ namespace demo.wsclient.src.controls
             try
             {
                 Console.WriteLine("[WSCredentialsContract] Subscribe resquest");
-                await Context.Instance.wsapi.credentialsContract.onUpdate.Subscribe("user-credentials-001-from-clientcs");
-                await Context.Instance.wsapi.credentialsContract.onDataUpdate.Subscribe("user-credentials-002-from-clientcs");
+                await Context.Instance.wsapi.credentialContract.onUpdate.Subscribe(1212);
+                await Context.Instance.wsapi.credentialContract.onDataUpdate.Subscribe(1212);
                 Console.WriteLine("[WSCredentialsContract] Subscribe response");
             }
             catch (Exception ex)
@@ -36,8 +36,8 @@ namespace demo.wsclient.src.controls
             try
             {
                 Console.WriteLine("[WSCredentialsContract] Unsubscribe resquest");
-                await Context.Instance.wsapi.credentialsContract.onUpdate.Unsubscribe();
-                await Context.Instance.wsapi.credentialsContract.onDataUpdate.Unsubscribe();
+                await Context.Instance.wsapi.credentialContract.onUpdate.Unsubscribe();
+                await Context.Instance.wsapi.credentialContract.onDataUpdate.Unsubscribe();
                 Console.WriteLine("[WSCredentialsContract] Unsubscribe response");
             }
             catch (Exception ex)
@@ -51,7 +51,7 @@ namespace demo.wsclient.src.controls
             try
             {
                 Console.WriteLine("[WSCredentialsContract] print resquest");
-                await Context.Instance.wsapi.credentialsContract.print("user-credentials-003-from-clientcs");
+                await Context.Instance.wsapi.credentialContract.print();
                 Console.WriteLine("[WSCredentialsContract] print response");
             }
             catch (Exception ex)
@@ -65,7 +65,7 @@ namespace demo.wsclient.src.controls
             try
             {
                 Console.WriteLine("[WSCredentialsContract] notify resquest");
-                await Context.Instance.wsapi.credentialsContract.notify();
+                await Context.Instance.wsapi.credentialContract.notify();
                 Console.WriteLine("[WSCredentialsContract] notify response");
             }
             catch (Exception ex)
