@@ -18,7 +18,7 @@ namespace demo.wsclient.src.controls
             try
             {
                 Console.WriteLine("[ui] Connect");
-                Context.Instance.wsapi.Ws.Connect("ws://localhost:3000/wsapi", "/");
+                Context.Instance.wsapi.Ws.Connect("ws://localhost:3000/", "/");
             }
             catch (Exception ex)
             {

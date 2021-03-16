@@ -21,7 +21,10 @@
         <WrapPanel Grid.Row="0" Margin="-4,0,4,0">
             <WrapPanel Orientation="Vertical">
                 <Label Width="612" Style="{StaticResource Title}">@nexjs Websocket Base Connection</Label>
-                <TextBox x:Name="_uiTextBoxUrl">http://localhost:3000</TextBox>
+                <WrapPanel Orientation="Horizontal">
+                    <TextBox x:Name="_uiTextBoxUrl" Width="250">ws://localhost:3000</TextBox>
+                    <TextBox x:Name="_uiTextBoxNsp" Width="50">/</TextBox>
+                </WrapPanel>
                 <Button x:Name="_uiButtonConnect" Click="_uiButtonConnect_Click">Connect</Button>
                 <Button x:Name="_uiButtonDisconnect" Click="_uiButtonDisconnect_Click">Disconnect</Button>
             </WrapPanel>
@@ -40,6 +43,5 @@
                 <Button x:Name="_uiButtonLogout" Click="_uiButtonLogout_Click">Logout</Button>
             </WrapPanel>
         </WrapPanel>
-       
     </Grid>
 </UserControl>

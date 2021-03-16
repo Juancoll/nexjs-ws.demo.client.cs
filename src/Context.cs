@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using demo.httpclient.Api;
 using demo.httpclient.Client;
 using demo.httpclient.Model;
+using dev.wsclient;
 
 namespace demo.wsclient
 {

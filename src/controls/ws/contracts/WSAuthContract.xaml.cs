@@ -22,8 +22,8 @@ namespace demo.wsclient.src.controls
             try
             {
                 Console.WriteLine("[WSAuthContract] Subscribe resquest");
-                await Context.Instance.wsapi.authContract.onUpdate.Subscribe(1212);
-                await Context.Instance.wsapi.authContract.onDataUpdate.Subscribe(1212);
+                await Context.Instance.wsapi.authContract.onUpdate.Subscribe();
+                await Context.Instance.wsapi.authContract.onDataUpdate.Subscribe();
                 Console.WriteLine("[WSAuthContract] Subscribe response");
             }
             catch(Exception ex)
