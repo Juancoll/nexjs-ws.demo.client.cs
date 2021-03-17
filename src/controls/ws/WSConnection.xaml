@@ -23,6 +23,7 @@
                 <Label Width="612" Style="{StaticResource Title}">@nexjs Websocket Base Connection</Label>
                 <WrapPanel Orientation="Horizontal">
                     <TextBox x:Name="_uiTextBoxUrl" Width="250">ws://localhost:3000</TextBox>
+                    <TextBox x:Name="_uiTextBoxPath" Width="250">/socket.io</TextBox>
                     <TextBox x:Name="_uiTextBoxNsp" Width="50">/</TextBox>
                 </WrapPanel>
                 <Button x:Name="_uiButtonConnect" Click="_uiButtonConnect_Click">Connect</Button>

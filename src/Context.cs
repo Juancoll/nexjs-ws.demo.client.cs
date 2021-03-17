@@ -98,7 +98,7 @@ namespace demo.wsclient
                 Console.WriteLine($"[wsapi] EventWSError code = {e.Value.Code}, message = {e.Value.Message}");
             };
 
-            #region [ IWSBase events ]
+            #region [ IWSBase events ]            
             wsapi.Ws.EventConnectionChange += (s, e) =>
             {
                 if (e.Value)
