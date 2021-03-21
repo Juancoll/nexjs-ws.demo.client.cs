@@ -207,7 +207,6 @@
     <Compile Include="src\ws-cli\lib\ws\base\EventData.cs" />
     <Compile Include="src\ws-cli\lib\ws\base\EventError.cs" />
     <Compile Include="src\ws-cli\lib\ws\base\IWSBase.cs" />
-    <Compile Include="src\ws-cli\lib\ws\base\NestJSWSException.cs" />
     <Compile Include="src\ws-cli\lib\ws\base\rest\messages\IId.cs" />
     <Compile Include="src\ws-cli\lib\ws\base\rest\messages\RestProtocolRequest.cs" />
     <Compile Include="src\ws-cli\lib\ws\base\rest\messages\RestProtocolResponse.cs" />

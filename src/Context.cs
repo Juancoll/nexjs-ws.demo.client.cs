@@ -130,10 +130,6 @@ namespace demo.wsclient
 
                 Console.WriteLine($"[IWSBase] EventReceive event = {e.Value.Name}, data = {strData}");
             };
-            wsapi.Ws.EventNestJSException += (s, e) =>
-            {
-                Console.WriteLine($"[IWSBase] EventNestJSException status = {e.Value.Status}, error = {e.Value.Message}");
-            };
             #endregion
 
             #region [ HubClient events ]
